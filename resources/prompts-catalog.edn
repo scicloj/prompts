@@ -1,0 +1,70 @@
+{:prompts
+ {"creating-datasets.md"
+  {:description "Creating datasets from various data sources with Tablecloth"
+   :tags #{:create-dataset :load-data :define-dataset}
+   :last-modified "2025-05-20"}
+
+  "filtering-rows.md"
+  {:description "Filtering and selecting rows from datasets"
+   :tags #{:filter-rows :select-rows :drop-rows}
+   :last-modified "2025-05-20"}
+
+  "column-operations.md"
+  {:description "Adding, updating, and manipulating dataset columns"
+   :tags #{:add-column :update-column :rename-column :drop-column}
+   :last-modified "2025-05-20"}
+
+  "grouping-aggregating.md"
+  {:description "Grouping datasets and performing aggregations"
+   :tags #{:group-data :aggregate-data :calculate-statistics}
+   :last-modified "2025-05-20"}
+
+  "joining-datasets.md"
+  {:description "Joining and combining datasets in various ways"
+   :tags #{:join-datasets :combine-datasets :merge-data}
+   :last-modified "2025-05-20"}
+
+  "data-visualization-plotly.md"
+  {:description "Creating interactive data visualizations with Tableplot's Plotly API"
+   :tags #{:create-visualization :build-chart :customize-plot}
+   :last-modified "2025-05-20"}
+
+  "time-series-visualization.md"
+  {:description "Visualizing time series data with interactive features"
+   :tags #{:visualize-time-series :plot-trends :analyze-temporal}
+   :last-modified "2025-05-20"}
+
+  "statistical-visualization.md"
+  {:description "Creating statistical plots for data analysis and exploration"
+   :tags #{:visualize-statistics :analyze-distribution :show-correlation}
+   :last-modified "2025-05-20"}
+
+  "geo-spatial-visualization.md"
+  {:description "Visualizing geo-spatial data on interactive maps"
+   :tags #{:create-map :visualize-geographic :plot-spatial}
+   :last-modified "2025-05-20"}
+
+  "basic-random-generation.md"
+  {:description "Basic random number generation with fastmath.random"
+   :tags #{:generate-random :create-rng :seed-random}
+   :last-modified "2025-05-20"}
+
+  "distribution-sampling.md"
+  {:description "Sampling from statistical distributions with fastmath.random"
+   :tags #{:sample-distribution :calculate-probability :generate-samples}
+   :last-modified "2025-05-20"}
+
+  "sequence-generation.md"
+  {:description "Generating random and quasi-random sequences"
+   :tags #{:generate-sequence :create-low-discrepancy :sample-space}
+   :last-modified "2025-05-20"}
+
+  "noise-generation.md"
+  {:description "Generating various types of noise for procedural generation"
+   :tags #{:generate-noise :create-fractal :simulate-terrain}
+   :last-modified "2025-05-20"}
+
+  "random-sampling-techniques.md"
+  {:description "Advanced random sampling techniques and utilities"
+   :tags #{:sample-randomly :shuffle-collection :weight-samples}
+   :last-modified "2025-05-20"}}}
