@@ -70,7 +70,93 @@ source: [ggplot2-economics_long](https://vincentarelbundock.github.io/Rdatasets/
 
 ## Preparing the prompt
 
-Let us explore all supported tasks:
+Let us explore the catalogue of relevant prompts.
+
+
+::: {.sourceClojure}
+```clojure
+(prompts/catalogue)
+```
+:::
+
+
+
+::: {.printedClojure}
+```clojure
+{:prompts
+ {"joining-datasets.md"
+  {:description "Joining and combining datasets in various ways",
+   :tags #{:combine-datasets :join-datasets :merge-data},
+   :last-modified "2025-05-20"},
+  "time-series-visualization.md"
+  {:description
+   "Visualizing time series data with interactive features",
+   :tags #{:visualize-time-series :analyze-temporal :plot-trends},
+   :last-modified "2025-05-20"},
+  "noise-generation.md"
+  {:description
+   "Generating various types of noise for procedural generation",
+   :tags #{:create-fractal :generate-noise :simulate-terrain},
+   :last-modified "2025-05-20"},
+  "column-operations.md"
+  {:description "Adding, updating, and manipulating dataset columns",
+   :tags #{:add-column :update-column :drop-column :rename-column},
+   :last-modified "2025-05-20"},
+  "sequence-generation.md"
+  {:description "Generating random and quasi-random sequences",
+   :tags #{:sample-space :create-low-discrepancy :generate-sequence},
+   :last-modified "2025-05-20"},
+  "random-sampling-techniques.md"
+  {:description "Advanced random sampling techniques and utilities",
+   :tags #{:sample-randomly :shuffle-collection :weight-samples},
+   :last-modified "2025-05-20"},
+  "creating-datasets.md"
+  {:description
+   "Creating datasets from various data sources with Tablecloth",
+   :tags #{:load-data :define-dataset :create-dataset},
+   :last-modified "2025-05-20"},
+  "basic-random-generation.md"
+  {:description "Basic random number generation with fastmath.random",
+   :tags #{:seed-random :generate-random :create-rng},
+   :last-modified "2025-05-20"},
+  "data-visualization-plotly.md"
+  {:description
+   "Creating interactive data visualizations with Tableplot's Plotly API",
+   :tags #{:create-visualization :customize-plot :build-chart},
+   :last-modified "2025-05-20"},
+  "geo-spatial-visualization.md"
+  {:description "Visualizing geo-spatial data on interactive maps",
+   :tags #{:plot-spatial :create-map :visualize-geographic},
+   :last-modified "2025-05-20"},
+  "filtering-rows.md"
+  {:description "Filtering and selecting rows from datasets",
+   :tags #{:select-rows :filter-rows :drop-rows},
+   :last-modified "2025-05-20"},
+  "grouping-aggregating.md"
+  {:description "Grouping datasets and performing aggregations",
+   :tags #{:aggregate-data :calculate-statistics :group-data},
+   :last-modified "2025-05-20"},
+  "distribution-sampling.md"
+  {:description
+   "Sampling from statistical distributions with fastmath.random",
+   :tags
+   #{:sample-distribution :calculate-probability :generate-samples},
+   :last-modified "2025-05-20"},
+  "statistical-visualization.md"
+  {:description
+   "Creating statistical plots for data analysis and exploration",
+   :tags
+   #{:visualize-statistics :analyze-distribution :show-correlation},
+   :last-modified "2025-05-20"}}}
+
+```
+:::
+
+
+You see, it is an annotated collection of Markdown files
+(which are the prompts themselves).
+
+More specifically, let us explore all supported tasks:
 
 
 ::: {.sourceClojure}
@@ -133,6 +219,8 @@ Let us explore all supported tasks:
 
 Let us generate a prompt for the tasks which are relevant
 to this notebook.
+It is created by concatenating the relevant prompts from the
+catalogue (along with a tiny base prompt).
 
 
 ::: {.sourceClojure}
