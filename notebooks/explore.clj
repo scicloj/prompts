@@ -36,11 +36,19 @@
 
 ;; ## Preparing the prompt
 
-;; Let us explore all supported tasks:
+;; Let us explore the catalogue of relevant prompts.
+(prompts/catalogue)
+
+;; You see, it is an annotated collection of Markdown files
+;; (which are the prompts themselves).
+
+;; More specifically, let us explore all supported tasks:
 (prompts/all-tags)
 
 ;; Let us generate a prompt for the tasks which are relevant
 ;; to this notebook.
+;; It is created by concatenating the relevant prompts from the
+;; catalogue (along with a tiny base prompt).
 
 (->> [:creating-datasets :plot-trends :aggregate-data]
      (prompts/generate-prompt)
