@@ -18,6 +18,7 @@ The prompts cover tasks related to:
 
 [notebooks/explore.clj](notebooks/explore.clj)
 
+[rendered](https://scicloj.github.io/prompts/explore)
 
 ## Usage
 TBA
