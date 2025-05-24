@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="explore_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="explore_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="explore_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="explore_files/libs/bootstrap/bootstrap-ad9b6e288d506fb6f9cf30c2d122351d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="explore_files/libs/bootstrap/bootstrap-131e4f7fa443f2db2612a4b23d8e2009.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link rel="icon" href="notebooks/favicon.ico">
 
 
@@ -83,10 +83,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#noj-prompts-proof-of-concept" id="toc-noj-prompts-proof-of-concept" class="nav-link active" data-scroll-target="#noj-prompts-proof-of-concept">Noj prompts proof-of-concept</a>
   <ul>
   <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#exploring-relevant-tasks-tags-at-the-catalogue" id="toc-exploring-relevant-tasks-tags-at-the-catalogue" class="nav-link" data-scroll-target="#exploring-relevant-tasks-tags-at-the-catalogue">Exploring relevant tasks (tags at the catalogue):</a></li>
-  <li><a href="#preparing-the-prompt" id="toc-preparing-the-prompt" class="nav-link" data-scroll-target="#preparing-the-prompt">Preparing the prompt</a></li>
-  <li><a href="#the-prompt-we-prepared" id="toc-the-prompt-we-prepared" class="nav-link" data-scroll-target="#the-prompt-we-prepared">The prompt we prepared</a></li>
   <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The data</a></li>
+  <li><a href="#preparing-the-prompt" id="toc-preparing-the-prompt" class="nav-link" data-scroll-target="#preparing-the-prompt">Preparing the prompt</a></li>
   <li><a href="#exploration" id="toc-exploration" class="nav-link" data-scroll-target="#exploration">Exploration</a></li>
   </ul></li>
   </ul>
@@ -126,77 +124,83 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>   [scicloj.metamorph.ml.rdatasets <span class="at">:as</span> rdatasets]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="exploring-relevant-tasks-tags-at-the-catalogue" class="level2">
-<h2 class="anchored" data-anchor-id="exploring-relevant-tasks-tags-at-the-catalogue">Exploring relevant tasks (tags at the catalogue):</h2>
+<section id="the-data" class="level2">
+<h2 class="anchored" data-anchor-id="the-data">The data</h2>
+<p>We wish to analyse the following dataset of economic time-series:</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb2"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(prompts/all-tags)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> economics</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  (rdatasets/ggplot2-economics_long))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="printedClojure">
-<div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">:add-column</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> <span class="at">:aggregate-data</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> <span class="at">:analyze-distribution</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a> <span class="at">:analyze-temporal</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a> <span class="at">:build-chart</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a> <span class="at">:calculate-probability</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a> <span class="at">:calculate-statistics</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a> <span class="at">:combine-datasets</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a> <span class="at">:create-dataset</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a> <span class="at">:create-fractal</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a> <span class="at">:create-low-discrepancy</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a> <span class="at">:create-map</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a> <span class="at">:create-rng</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a> <span class="at">:create-visualization</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a> <span class="at">:customize-plot</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a> <span class="at">:define-dataset</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a> <span class="at">:drop-column</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a> <span class="at">:drop-rows</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a> <span class="at">:filter-rows</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a> <span class="at">:generate-noise</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a> <span class="at">:generate-random</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a> <span class="at">:generate-samples</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a> <span class="at">:generate-sequence</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a> <span class="at">:group-data</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a> <span class="at">:join-datasets</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a> <span class="at">:load-data</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a> <span class="at">:merge-data</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a> <span class="at">:plot-spatial</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a> <span class="at">:plot-trends</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a> <span class="at">:rename-column</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a> <span class="at">:sample-distribution</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a> <span class="at">:sample-randomly</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a> <span class="at">:sample-space</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a> <span class="at">:seed-random</span></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a> <span class="at">:select-rows</span></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a> <span class="at">:show-correlation</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a> <span class="at">:shuffle-collection</span></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a> <span class="at">:simulate-terrain</span></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a> <span class="at">:update-column</span></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a> <span class="at">:visualize-geographic</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a> <span class="at">:visualize-statistics</span></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a> <span class="at">:visualize-time-series</span></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a> <span class="at">:weight-samples</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>source: <a href="https://vincentarelbundock.github.io/Rdatasets/doc/ggplot2/economics_long.html">ggplot2-economics_long</a> at <a href="https://vincentarelbundock.github.io/Rdatasets/articles/data.html">Rdatasets</a></p>
 </section>
 <section id="preparing-the-prompt" class="level2">
 <h2 class="anchored" data-anchor-id="preparing-the-prompt">Preparing the prompt</h2>
+<p>Let us explore all supported tasks:</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;&gt;</span> [<span class="at">:creating-datasets</span> <span class="at">:plot-trends</span> <span class="at">:aggregate-data</span>]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>     (prompts/generate-prompt)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>     (spit <span class="st">"CLAUDE.md"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(prompts/all-tags)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb5"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">nil</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">:add-column</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a> <span class="at">:aggregate-data</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a> <span class="at">:analyze-distribution</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a> <span class="at">:analyze-temporal</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a> <span class="at">:build-chart</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a> <span class="at">:calculate-probability</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a> <span class="at">:calculate-statistics</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a> <span class="at">:combine-datasets</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a> <span class="at">:create-dataset</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a> <span class="at">:create-fractal</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a> <span class="at">:create-low-discrepancy</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a> <span class="at">:create-map</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a> <span class="at">:create-rng</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a> <span class="at">:create-visualization</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a> <span class="at">:customize-plot</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a> <span class="at">:define-dataset</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a> <span class="at">:drop-column</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a> <span class="at">:drop-rows</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a> <span class="at">:filter-rows</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a> <span class="at">:generate-noise</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a> <span class="at">:generate-random</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a> <span class="at">:generate-samples</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a> <span class="at">:generate-sequence</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a> <span class="at">:group-data</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a> <span class="at">:join-datasets</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a> <span class="at">:load-data</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a> <span class="at">:merge-data</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a> <span class="at">:plot-spatial</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a> <span class="at">:plot-trends</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a> <span class="at">:rename-column</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a> <span class="at">:sample-distribution</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a> <span class="at">:sample-randomly</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a> <span class="at">:sample-space</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a> <span class="at">:seed-random</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a> <span class="at">:select-rows</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a> <span class="at">:show-correlation</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a> <span class="at">:shuffle-collection</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a> <span class="at">:simulate-terrain</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a> <span class="at">:update-column</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a> <span class="at">:visualize-geographic</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a> <span class="at">:visualize-statistics</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a> <span class="at">:visualize-time-series</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a> <span class="at">:weight-samples</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="the-prompt-we-prepared" class="level2">
-<h2 class="anchored" data-anchor-id="the-prompt-we-prepared">The prompt we prepared</h2>
+<p>Let us generate a prompt for the tasks which are relevant to this notebook.</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb6"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(kind/hiccup</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a> [<span class="at">:div</span> {<span class="at">:style</span> {<span class="at">:height</span> <span class="st">"400px"</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">:overflow-y</span> <span class="st">"scroll"</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">:background-color</span> <span class="st">"floralwhite"</span>}}</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  (kind/md</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>   (<span class="kw">slurp</span> <span class="st">"CLAUDE.md"</span>))])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;&gt;</span> [<span class="at">:creating-datasets</span> <span class="at">:plot-trends</span> <span class="at">:aggregate-data</span>]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>     (prompts/generate-prompt)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>     (spit <span class="st">"CLAUDE.md"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="printedClojure">
+<div class="sourceCode" id="cb6"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">nil</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here is the prompt we just prepared:</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb7"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(kind/hiccup</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a> [<span class="at">:div</span> {<span class="at">:style</span> {<span class="at">:height</span> <span class="st">"400px"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">:overflow-y</span> <span class="st">"scroll"</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">:background-color</span> <span class="st">"floralwhite"</span>}}</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  (kind/md</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>   (<span class="kw">slurp</span> <span class="st">"CLAUDE.md"</span>))])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div style="background-color:floralwhite;height:400px;overflow-y:scroll;"><div><h1 id="general-guidelines">General guidelines</h1><p>When handling requests in code, please do not erase the text of the request. In other words, please keep the paragraphs beginning with "@claude". Your role is only to add code, not change or erase anything.</p><h1 id="time-series-visualization-with-tableplot">Time Series Visualization with Tableplot</h1><h2 id="purpose" class="anchored">Purpose</h2><p>This prompt focuses specifically on visualizing time series data using Tableplot's Plotly API.</p><h2 id="setup" class="anchored">Setup</h2><pre class="viewer-code not-prose">(require '[scicloj.tableplot.v1.plotly :as plotly])
 (require '[scicloj.tablecloth.api :as tc])
@@ -425,14 +429,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                     :max-v2 #(dfn/max (% :V2))
                     :std-v2 #(dfn/standard-deviation (% :V2))}))
 </pre><h2 id="tips" class="anchored">Tips</h2><ul><li>Grouped datasets retain all columns in each group</li><li>Use tech.v3.datatype.functional for efficient numeric operations</li><li>Combine aggregations with other operations for complex analysis</li><li>Groups are named by their grouping values</li></ul></div></div>
-</section>
-<section id="the-data" class="level2">
-<h2 class="anchored" data-anchor-id="the-data">The data</h2>
-<div class="sourceClojure">
-<div class="sourceCode" id="cb7"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> economics</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  (rdatasets/ggplot2-economics_long))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>source: <a href="https://vincentarelbundock.github.io/Rdatasets/doc/ggplot2/economics_long.html">ggplot2-economics_long</a> at <a href="https://vincentarelbundock.github.io/Rdatasets/articles/data.html">Rdatasets</a></p>
 </section>
 <section id="exploration" class="level2">
 <h2 class="anchored" data-anchor-id="exploration">Exploration</h2>

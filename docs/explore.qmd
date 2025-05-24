@@ -52,7 +52,25 @@ at the Claude Code prompt.
 
 
 
-## Exploring relevant tasks (tags at the catalogue):
+## The data
+
+We wish to analyse the following dataset of economic time-series:
+
+
+::: {.sourceClojure}
+```clojure
+(def economics
+  (rdatasets/ggplot2-economics_long))
+```
+:::
+
+
+source: [ggplot2-economics_long](https://vincentarelbundock.github.io/Rdatasets/doc/ggplot2/economics_long.html) at [Rdatasets](https://vincentarelbundock.github.io/Rdatasets/articles/data.html)
+
+
+## Preparing the prompt
+
+Let us explore all supported tasks:
 
 
 ::: {.sourceClojure}
@@ -113,8 +131,8 @@ at the Claude Code prompt.
 :::
 
 
-
-## Preparing the prompt
+Let us generate a prompt for the tasks which are relevant
+to this notebook.
 
 
 ::: {.sourceClojure}
@@ -135,8 +153,7 @@ nil
 :::
 
 
-
-## The prompt we prepared
+Here is the prompt we just prepared:
 
 
 ::: {.sourceClojure}
@@ -382,20 +399,6 @@ nil
 </pre><h2 id="tips">Tips</h2><ul><li>Grouped datasets retain all columns in each group</li><li>Use tech.v3.datatype.functional for efficient numeric operations</li><li>Combine aggregations with other operations for complex analysis</li><li>Groups are named by their grouping values</li></ul></div></div>
 ```
 
-
-
-## The data
-
-
-::: {.sourceClojure}
-```clojure
-(def economics
-  (rdatasets/ggplot2-economics_long))
-```
-:::
-
-
-source: [ggplot2-economics_long](https://vincentarelbundock.github.io/Rdatasets/doc/ggplot2/economics_long.html) at [Rdatasets](https://vincentarelbundock.github.io/Rdatasets/articles/data.html)
 
 
 ## Exploration
