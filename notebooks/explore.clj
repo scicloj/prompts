@@ -20,26 +20,9 @@
    [scicloj.tableplot.v1.plotly :as plotly]
    [scicloj.metamorph.ml.rdatasets :as rdatasets]))
 
-;; ## Exploring relevant tasks (tags at the catalogue):
-
-(prompts/all-tags)
-
-;; ## Preparing the prompt
-
-(->> [:creating-datasets :plot-trends :aggregate-data]
-     (prompts/generate-prompt)
-     (spit "CLAUDE.md"))
-
-;; ## The prompt we prepared
-
-(kind/hiccup
- [:div {:style {:height "400px"
-                :overflow-y "scroll"
-                :background-color "floralwhite"}}
-  (kind/md
-   (slurp "CLAUDE.md"))])
-
 ;; ## The data
+
+;; We wish to analyse the following dataset of economic time-series:
 
 (def economics
   (rdatasets/ggplot2-economics_long))
@@ -50,6 +33,27 @@
   (kind/md
    (format "source: [%s](%s) at [Rdatasets](https://vincentarelbundock.github.io/Rdatasets/articles/data.html)"
            name doc-link)))
+
+;; ## Preparing the prompt
+
+;; Let us explore all supported tasks:
+(prompts/all-tags)
+
+;; Let us generate a prompt for the tasks which are relevant
+;; to this notebook.
+
+(->> [:creating-datasets :plot-trends :aggregate-data]
+     (prompts/generate-prompt)
+     (spit "CLAUDE.md"))
+
+;; Here is the prompt we just prepared:
+
+(kind/hiccup
+ [:div {:style {:height "400px"
+                :overflow-y "scroll"
+                :background-color "floralwhite"}}
+  (kind/md
+   (slurp "CLAUDE.md"))])
 
 ;; ## Exploration
 
