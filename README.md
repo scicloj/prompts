@@ -14,6 +14,10 @@ The prompts cover tasks related to:
 - Random number generation with fastmath.random
 - And more...
 
+## Initial example
+
+[notebooks/explore.clj](notebooks/explore.clj)
+
 
 ## Usage
 TBA
